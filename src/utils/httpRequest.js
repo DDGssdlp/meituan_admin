@@ -32,7 +32,7 @@ http.interceptors.request.use(config => {
  * 响应拦截
  */
 http.interceptors.response.use(response => {
-  if (response.data && response.data.code === 'B0004') { // 401, token失效
+  if (response.data && (response.data.code === 'B0004' || response.data.code === 'B0005')) { // 401, token失效 403 
     removeToken()
     router.push({ name: 'login' })
   }
